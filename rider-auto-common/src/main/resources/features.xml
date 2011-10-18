@@ -11,7 +11,7 @@
         <bundle>mvn:org.fusesource.examples/rider-auto-common/${project.version}</bundle>
         <bundle>mvn:org.fusesource.examples/rider-auto-file/${project.version}</bundle>    
         <bundle>mvn:org.fusesource.examples/rider-auto-ws/${project.version}</bundle>    
-        <bundle>mvn:org.fusesource.examples/rider-auto-router/${project.version}</bundle>    
+        <bundle>mvn:org.fusesource.examples/rider-auto-normalizer/${project.version}</bundle>    
         <bundle>mvn:org.fusesource.examples/rider-auto-backend/${project.version}</bundle>                                            
     </feature>
 </features>

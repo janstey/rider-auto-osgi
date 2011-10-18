@@ -40,7 +40,6 @@
     <dependency>
       <groupId>org.fusesource.examples</groupId>
       <artifactId>rider-auto-common</artifactId>
-      <version>${project.version}</version>
     </dependency>
   
     <!-- Core Camel support -->     
@@ -76,26 +75,14 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
       </plugin>
-
-      <!-- allows the route to be ran via 'mvn camel:run' --> 
-      <plugin>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-maven-plugin</artifactId>
-        <version>${camel-version}</version>
-      </plugin>
-
+      
       <!-- generate OSGi bundle -->
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
         <extensions>true</extensions>
-      </plugin>
-      
+      </plugin>      
      </plugins>
   </build>
 

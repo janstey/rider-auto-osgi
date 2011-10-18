@@ -4,7 +4,6 @@
   <property-placeholder persistent-id="org.fusesource.camel.ws"
     xmlns="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0">
     <default-properties>
-      <!-- full address is actually http://localhost:8181/cxf/order -->
       <property name="httpAddress" value="http://localhost:8182/cxf/order" />
     </default-properties>
   </property-placeholder>
@@ -13,15 +12,7 @@
                    address="${httpAddress}"
                    serviceClass="org.fusesource.camel.ws.OrderEndpoint"/>
 
-  <!-- use CF from ActiveMQ blueprint service running in container -->
-  <reference id="connectionFactory" interface="javax.jms.ConnectionFactory" 
-    filter="(name=localhost)" />
-
-  <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
-    <property name="connectionFactory" ref="connectionFactory" />
-  </bean>
-
-  <camelContext id="rider-auto-ws" xmlns="http://camel.apache.org/schema/blueprint">
+  <camelContext id="rider-auto-ws" trace="false" xmlns="http://camel.apache.org/schema/blueprint">
     <route id="ws-to-jms">
       <from uri="cxf:bean:orderEndpoint" />  
       <setBody>
@@ -33,5 +24,12 @@
       </transform>
     </route>
   </camelContext>
+
+  <!-- use CF from ActiveMQ blueprint service running in container -->
+  <reference id="connectionFactory" interface="javax.jms.ConnectionFactory" 
+    filter="(name=localhost)" />
+  <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
+    <property name="connectionFactory" ref="connectionFactory" />
+  </bean>
 
 </blueprint>
