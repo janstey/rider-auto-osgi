@@ -29,7 +29,7 @@ Setup
 Build & Run
 ==============================
 
-Build this project so bundles are deployed into your local maven repo
+1) Build this project so bundles are deployed into your local maven repo
 
 <project home> $ mvn clean install
 
