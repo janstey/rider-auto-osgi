@@ -1,14 +1,6 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
 
-  <!-- use CF from ActiveMQ blueprint service running in container -->
-  <reference id="connectionFactory" interface="javax.jms.ConnectionFactory" 
-    filter="(name=localhost)" />
-
-  <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
-    <property name="connectionFactory" ref="connectionFactory" />
-  </bean>
-
-  <camelContext id="rider-auto-router" trace="true" xmlns="http://camel.apache.org/schema/blueprint">
+  <camelContext id="rider-auto-normalizer" trace="false" xmlns="http://camel.apache.org/schema/blueprint">
     <route id="normalize-message-data">
       <from uri="jms:incomingOrders" />      
       <choice>
@@ -29,5 +21,12 @@
       <to uri="jms:orders" />
     </route>
   </camelContext>
+
+  <!-- use CF from ActiveMQ blueprint service running in container -->
+  <reference id="connectionFactory" interface="javax.jms.ConnectionFactory" 
+    filter="(name=localhost)" />
+  <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
+    <property name="connectionFactory" ref="connectionFactory" />
+  </bean>
 
 </blueprint>
