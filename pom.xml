@@ -42,7 +42,7 @@
     <module>rider-auto-common</module>
     <module>rider-auto-file</module>
     <module>rider-auto-ws</module>
-    <module>rider-auto-router</module>            
+    <module>rider-auto-normalizer</module>            
     <module>rider-auto-backend</module>    
   </modules>
 
@@ -83,17 +83,24 @@
         <version>${camel-version}</version>
       </dependency>
 
-      <!-- Add support for HTTP -->
+      <dependency>
+        <groupId>org.fusesource.examples</groupId>
+        <artifactId>rider-auto-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <!-- Add support for CXF -->
       <dependency>
         <groupId>org.apache.camel</groupId>
-        <artifactId>camel-jetty</artifactId>
+        <artifactId>camel-cxf</artifactId>
         <version>${camel-version}</version>
-      </dependency>
+      </dependency>        
       <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-http</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-transports-http-jetty</artifactId>
+        <version>${cxf-version}</version>
+      </dependency>    
+
 
       <dependency>
         <groupId>org.apache.camel.karaf</groupId>
@@ -117,27 +124,8 @@
         <version>${activemq-version}</version>
         <classifier>features</classifier>
         <type>xml</type>
-      </dependency>
+      </dependency>  
 
-      <!-- Testing support -->
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-test</artifactId>
-        <version>${camel-version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>commons-codec</groupId>
-        <artifactId>commons-codec</artifactId>
-        <version>1.4</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.8.1</version>
-        <scope>test</scope>
-      </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
@@ -150,6 +138,38 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <source>1.5</source>
+            <target>1.5</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-maven-plugin</artifactId>
+          <version>${camel-version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <extensions>true</extensions>
+          <version>2.3.5</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.7</version>
+        </plugin>        
+      </plugins>
+    </pluginManagement>
+  </build>
 
   <repositories>
     <repository>
