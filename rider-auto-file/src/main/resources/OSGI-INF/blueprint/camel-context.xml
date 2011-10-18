@@ -1,0 +1,25 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+  <property-placeholder persistent-id="org.fusesource.camel.filepoller"
+    xmlns="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0">
+    <default-properties>
+      <property name="fileEndpoint" value="file:target/placeorder" />
+    </default-properties>
+  </property-placeholder>
+
+  <!-- use CF from ActiveMQ blueprint service running in container -->
+  <reference id="connectionFactory" interface="javax.jms.ConnectionFactory" 
+    filter="(name=localhost)" />
+
+  <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
+    <property name="connectionFactory" ref="connectionFactory" />
+  </bean>
+
+  <camelContext id="rider-auto-file-poller" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="file-to-jms">
+      <from uri="{{fileEndpoint}}" />
+      <to uri="jms:incomingOrders" />
+    </route>
+  </camelContext>
+
+</blueprint>
