@@ -1,3 +1,8 @@
+NOTE: If you need the example from the "Getting Started with Apache Servicemix" 
+webinar, please use the code from the rider-auto-osgi-smx-4.4.1-fuse-00-08 tag instead.
+
+
+
 Example from "Getting Started with Apache Servicemix" webinar
 ========================================================
 
