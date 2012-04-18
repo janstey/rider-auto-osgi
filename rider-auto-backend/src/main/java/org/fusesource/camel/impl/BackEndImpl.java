@@ -1,13 +1,13 @@
 package org.fusesource.camel.impl;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.fusesource.camel.model.Order;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BackEndImpl {
-    private static final Log LOG = LogFactory.getLog(BackEndImpl.class);
-
+    private static final Logger LOG = LoggerFactory.getLogger(BackEndImpl.class);
+    
     public void doWork(Order order) {
-        LOG.info("Received order for " + order.getAmount() + " " + order.getName());
+        LOG.info("Received order for {} {}s.", order.getAmount(), order.getName());
     }
 }

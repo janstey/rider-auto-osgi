@@ -40,7 +40,7 @@ Build & Run
 3) Add this projects features.xml config to ServiceMix from the ServiceMix
    Console (makes it easier to install bundles with all required dependencies)
 
-karaf@root> features:addUrl mvn:org.fusesource.examples/rider-auto-common/3.0-SNAPSHOT/xml/features
+karaf@root> features:addUrl mvn:org.fusesource.examples/rider-auto-common/4.0-SNAPSHOT/xml/features
 
 4) Install the project.
 

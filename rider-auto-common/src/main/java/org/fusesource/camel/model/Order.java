@@ -21,7 +21,9 @@ import org.apache.camel.dataformat.bindy.annotation.DataField;
 @CsvRecord(separator = ",", skipFirstLine = true)
 public class Order implements Serializable {
 
-    @XmlElement(required = true)
+	private static final long serialVersionUID = 7593349011208666446L;
+
+	@XmlElement(required = true)
     @DataField(pos = 1)
     protected String name;
     

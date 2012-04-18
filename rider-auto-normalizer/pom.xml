@@ -26,10 +26,9 @@
   <parent>
     <groupId>org.fusesource.examples</groupId>
     <artifactId>rider-auto-osgi</artifactId>
-    <version>3.0-SNAPSHOT</version>
+    <version>4.0-SNAPSHOT</version>
   </parent>
   
-  <groupId>org.fusesource.examples</groupId>
   <artifactId>rider-auto-normalizer</artifactId>
   <packaging>bundle</packaging>
   
@@ -40,15 +39,8 @@
     <dependency>
       <groupId>org.fusesource.examples</groupId>
       <artifactId>rider-auto-common</artifactId>
-      <version>${project.version}</version>
     </dependency>
       
-    <!-- Core Camel support -->     
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-core</artifactId>
-    </dependency>
-    
     <!-- Blueprint container support -->
     <dependency>
       <groupId>org.apache.camel</groupId>
@@ -73,24 +65,19 @@
       <artifactId>camel-bindy</artifactId>
     </dependency>    
     
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-    </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+      </dependency>
   </dependencies>
 
   <build>
 
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-
       <!-- generate OSGi bundle -->
       <plugin>
         <groupId>org.apache.felix</groupId>
