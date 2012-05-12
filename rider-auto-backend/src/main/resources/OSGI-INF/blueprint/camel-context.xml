@@ -11,7 +11,7 @@
 
   <!-- use CF from ActiveMQ blueprint service running in container -->
   <reference id="connectionFactory" interface="javax.jms.ConnectionFactory" 
-    filter="(name=localhost)" />
+    filter="(name=default)" />
   <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
     <property name="connectionFactory" ref="connectionFactory" />
   </bean>

@@ -1,0 +1,66 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Rider Auto OSGi Example :: Integration Tests 4.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ rider-auto-itest ---
+[INFO] Deleting /home/janstey/Dropbox/LocalCamelOne2012/SmxPreso/rider-auto-osgi/rider-auto-itest/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ rider-auto-itest ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/janstey/Dropbox/LocalCamelOne2012/SmxPreso/rider-auto-osgi/rider-auto-itest/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ rider-auto-itest ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ rider-auto-itest ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/janstey/Dropbox/LocalCamelOne2012/SmxPreso/rider-auto-osgi/rider-auto-itest/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ rider-auto-itest ---
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/janstey/Dropbox/LocalCamelOne2012/SmxPreso/rider-auto-osgi/rider-auto-itest/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12:test (default-test) @ rider-auto-itest ---
+[INFO] Surefire report directory: /home/janstey/Dropbox/LocalCamelOne2012/SmxPreso/rider-auto-osgi/rider-auto-itest/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.fusesource.esb.itests.pax.exam.karaf.RiderAutoFeatureTest
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/janstey/.m2/repository/org/apache/karaf/org.apache.karaf.client/2.2.5.fuse-7-061/org.apache.karaf.client-2.2.5.fuse-7-061.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/janstey/.m2/repository/org/slf4j/slf4j-simple/1.6.4/slf4j-simple-1.6.4.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/janstey/.m2/repository/org/ops4j/pax/logging/pax-logging-api/1.6.7/pax-logging-api-1.6.7.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.419 sec <<< FAILURE!
+
+Results :
+
+Tests in error: 
+  testRiderAutoOsgi:RiderAutoFeatureTest.testRiderAutoOsgi:KarafTestContainer{mvn:org.fusesource.esb\/fuse-esb-medium\/7.0.0.fuse-061\/tar.gz}(org.fusesource.esb.itests.pax.exam.karaf.RiderAutoFeatureTest): org/ops4j/pax/url/mvn/internal/AetherBridgeConnection
+
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 11.580s
+[INFO] Finished at: Fri May 11 23:16:03 NDT 2012
+[INFO] Final Memory: 25M/285M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12:test (default-test) on project rider-auto-itest: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /home/janstey/Dropbox/LocalCamelOne2012/SmxPreso/rider-auto-osgi/rider-auto-itest/target/surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
