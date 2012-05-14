@@ -19,12 +19,10 @@ package org.fusesource.esb.itests.pax.exam.karaf;
 
 import java.io.File;
 
-import org.apache.karaf.features.FeaturesService;
 import org.fusesource.tooling.testing.pax.exam.karaf.FuseTestSupport;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openengsb.labs.paxexam.karaf.options.LogLevelOption;
-import org.ops4j.pax.exam.MavenUtils;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.junit.Configuration;
 import org.ops4j.pax.exam.junit.ExamReactorStrategy;

@@ -86,4 +86,5 @@
     </plugins>
   </build>
       
+  <groupId>org.fusesource.examples</groupId>
 </project>
