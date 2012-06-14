@@ -60,6 +60,7 @@
       <groupId>org.fusesource.esb</groupId>
       <artifactId>fuse-esb-medium</artifactId>
       <version>${fabric-version}</version>
+      <type>tar.gz</type>
     </dependency>
 
 
