@@ -40,12 +40,12 @@
   </modules>
 
   <properties>
-    <activemq-version>5.5.1.fuse-beta-7-042</activemq-version>
-    <camel-version>2.9.0.fuse-beta-7-042</camel-version>
-    <cxf-version>2.5.0.fuse-beta-7-042</cxf-version>
-    <fabric.version>7.0.0.fuse-beta-042</fabric.version>
-    <karaf-version>2.2.5.fuse-beta-7-042</karaf-version>
-    <smx-features-version>4.5.0.fuse-beta-7-042</smx-features-version>    
+    <activemq-version>5.5.1.fuse-70-084</activemq-version>
+    <camel-version>2.9.0.fuse-70-084</camel-version>
+    <cxf-version>2.5.0.fuse-70-084</cxf-version>
+    <fabric-version>7.0.1.fuse-084</fabric-version>
+    <karaf-version>2.2.5.fuse-70-084</karaf-version>
+    <smx-features-version>4.5.0.fuse-70-084</smx-features-version>    
     <slf4j-api-version>1.6.1</slf4j-api-version>
   </properties>
 

@@ -66,7 +66,7 @@ karaf@root> log:display
 
 6) To test the WS, use your favorite WS tool (e.g. SoapUI) against the following
    WSDL hosted by the rider-auto-ws bundle.
-   * http://localhost:8182/cxf/order?wsdl
+   * http://localhost:9191/cxf/order?wsdl
 
 Getting Help
 ============================

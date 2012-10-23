@@ -2,7 +2,7 @@
 
   <camelContext id="rider-auto-normalizer" trace="false" xmlns="http://camel.apache.org/schema/blueprint">
     <route id="normalize-message-data">
-      <from uri="jms:incomingOrders" />      
+      <from uri="activemq:incomingOrders" />      
       <choice>
         <when>
           <simple>${header.CamelFileName} regex '^.*xml$'</simple>
@@ -18,15 +18,24 @@
           <convertBodyTo type="org.fusesource.camel.model.Order"/>
         </when>
       </choice>            
-      <to uri="jms:orders" />
+      <to uri="activemq:orders" />
     </route>
   </camelContext>
 
-  <!-- use CF from ActiveMQ blueprint service running in container -->
-  <reference id="connectionFactory" interface="javax.jms.ConnectionFactory" 
-    filter="(name=localhost)" />
-  <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
-    <property name="connectionFactory" ref="connectionFactory" />
+  <!-- use the fabric protocol in the brokerURL to connect to the ActiveMQ 
+    broker registered as default name -->
+  <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+    <property name="brokerURL" value="discovery:(fabric:default)" />
+  </bean>
+
+  <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+    <property name="maxConnections" value="1" />
+    <property name="maximumActive" value="500" />
+    <property name="connectionFactory" ref="jmsConnectionFactory" />
+  </bean>
+
+  <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+    <property name="connectionFactory" ref="pooledConnectionFactory" />
   </bean>
 
 </blueprint>
