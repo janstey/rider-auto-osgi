@@ -1,0 +1,33 @@
+shell:echo Install rider auto example
+
+shell:echo Create fabric
+fabric:create
+
+shell:echo Create rider-auto profiles
+fabric:profile-create --parents camel rider-auto-frontend
+fabric:profile-create --parents camel rider-auto-backend
+
+shell:echo Add repositories, features, ... to the profiles
+fabric:profile-edit --repositories mvn:org.fusesource.examples/rider-auto-common/${project.version}/xml/features rider-auto-frontend
+fabric:profile-edit --features rider-auto-frontend rider-auto-frontend
+
+fabric:profile-edit --pid rider.auto.ws.config/httpAddress=http://localhost:9191/cxf/order rider-auto-frontend
+fabric:profile-edit --pid rider.auto.file.config/fileEndpoint=file:target/incomingOrders rider-auto-frontend
+
+fabric:profile-edit --repositories mvn:org.fusesource.examples/rider-auto-common/${project.version}/xml/features rider-auto-backend
+fabric:profile-edit --features rider-auto-backend rider-auto-backend
+
+shell:echo Creating containers
+fabric:container-create-child --profile mq root rider-auto-broker
+fabric:container-create-child --profile rider-auto-frontend root rider-auto-frontend
+fabric:container-create-child --profile rider-auto-backend root rider-auto-backend
+
+# get around CXF xerces bug http://fusesource.com/issues/browse/FABRICPRV-250
+#shell:sleep 15000
+#admin:stop rider-auto-frontend
+#admin:start rider-auto-frontend
+#shell:sleep 10000
+#container-connect rider-auto-frontend osgi:restart org.fusesource.examples.rider-auto-normalizer
+#container-connect rider-auto-frontend osgi:restart org.fusesource.examples.rider-auto-file
+
+shell:echo done.
