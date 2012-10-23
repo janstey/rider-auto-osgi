@@ -1,21 +1,11 @@
-NOTE: If you need the example from the "Getting Started with Apache Servicemix" 
-webinar, please use the code from the rider-auto-osgi-smx-4.4.1-fuse-00-08 tag instead.
-
-
-
-Example from "Getting Started with Apache Servicemix" webinar
+Example from "Getting started with Fuse ESB Enterprise" webinar
 ========================================================
 
-To run this example project build the project and deploy to ServiceMix  
+To run this example project build the project and deploy to Fuse ESB 
 according to the steps below. 
 
 Setup
 ==============================
-
-- Install Eclipse 3.6.2
-    - Download distribution from http://www.eclipse.org. 
-    - Unzip the downloaded Eclipse distribution to a location on your hard disk 
-    that you find suitable.
 
 - Install Apache Maven 3+
     - Download distribution from http://maven.apache.org. 
@@ -25,11 +15,10 @@ Setup
     - add MAVEN_HOME/bin to your PATH environment variable
 
 - Install Fuse IDE for Camel
-    - Follow the instructions at: 
-      http://fusesource.com/docs/ide/2.0/install_guide/front.html
+    - Download from http://fusesource.com/products/fuse-ide/
 
-- Install Fuse ESB / ServiceMix 4.4.1-fuse-00-08
-  - Download from http://fusesource.com/downloads/ and extract
+- Install Fuse ESB Enterprise 7.0.1
+  - Download from http://www.redhat.com/fusesource/downloads
 
 Build & Run
 ==============================
@@ -38,38 +27,36 @@ Build & Run
 
 <project home> $ mvn clean install
 
-2) Start ServiceMix
+2) Start Fuse ESB
 
-<ServiceMix home> $ bin/servicemix
+<ESB home> $ bin/fuseesb
 
-3) Add this projects features.xml config to ServiceMix from the ServiceMix
-   Console (makes it easier to install bundles with all required dependencies)
+3) Set up the containers used in this project by sourcing the install script:
 
-karaf@root> features:addUrl mvn:org.fusesource.examples/rider-auto-common/4.0-SNAPSHOT/xml/features
+FuseESB:karaf@root> shell:source mvn:org.fusesource.examples/rider-auto-common/4.0-SNAPSHOT/karaf/installer
 
-4) Install the project.
+Alternatively you can open up the file and execute each command yourself.
 
-karaf@root> features:install rider-auto-osgi
-
-5) To test the file processing, there are existing files in the
+4) To test the file processing, there are existing files in the
    rider-auto-common module.
 
-<project home> $ cp rider-auto-common/src/data/message1.xml <ServiceMix Home>/target/placeorder
+<project home> $ cp rider-auto-common/src/data/message1.xml <ESB Home>/instances/rider-auto-frontend/target/incomingOrders/
+<project home> $ cp rider-auto-common/src/data/message2.csv <ESB Home>/instances/rider-auto-frontend/target/incomingOrders/
 
-   To see what happened look at the ServiceMix log file, either from the console
+   To see what happened look at the ESB log file, either from the console
 
-karaf@root> log:display
+FuseESB:karaf@root> container-connect rider-auto-backend log:display
 
    or from the command line
 
-<ServiceMix home> $ tail -f data/log/servicemix.log
+<ESB home> $ tail -f instances/rider-auto-backend/data/log/fuseesb.log
 
-6) To test the WS, use your favorite WS tool (e.g. SoapUI) against the following
-   WSDL hosted by the rider-auto-ws bundle.
+5) To test the WS, use your favorite WS tool (e.g. SoapUI) against the following
+   WSDL hosted by the rider-auto-frontend container.
    * http://localhost:9191/cxf/order?wsdl
 
 Getting Help
 ============================
 
 If you hit any problems please let the FuseSource team know on the forums
-  http://fusesource.com/forums/forum.jspa?forumID=2
+  http://fusesource.com/forums/forum.jspa?forumID=15
