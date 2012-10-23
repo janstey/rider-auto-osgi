@@ -22,12 +22,4 @@ fabric:container-create-child --profile mq root rider-auto-broker
 fabric:container-create-child --profile rider-auto-frontend root rider-auto-frontend
 fabric:container-create-child --profile rider-auto-backend root rider-auto-backend
 
-# get around CXF xerces bug http://fusesource.com/issues/browse/FABRICPRV-250
-#shell:sleep 15000
-#admin:stop rider-auto-frontend
-#admin:start rider-auto-frontend
-#shell:sleep 10000
-#container-connect rider-auto-frontend osgi:restart org.fusesource.examples.rider-auto-normalizer
-#container-connect rider-auto-frontend osgi:restart org.fusesource.examples.rider-auto-file
-
 shell:echo done.
