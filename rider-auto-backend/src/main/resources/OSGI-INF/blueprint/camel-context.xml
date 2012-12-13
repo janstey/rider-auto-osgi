@@ -17,6 +17,8 @@
     broker registered as default name -->
   <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
     <property name="brokerURL" value="discovery:(fabric:default)" />
+    <property name="userName" value="admin"/>
+    <property name="password" value="admin"/>
   </bean>
 
   <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">

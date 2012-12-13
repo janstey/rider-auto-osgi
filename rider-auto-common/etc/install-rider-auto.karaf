@@ -3,6 +3,8 @@ shell:echo Install rider auto example
 shell:echo Create fabric
 fabric:create
 
+dev:wait-for-service "(&(objectClass=org.apache.felix.service.command.Function)(osgi.command.scope=fabric)(osgi.command.function=profile-edit))"
+
 shell:echo Create rider-auto profiles
 fabric:profile-create --parents camel rider-auto-frontend
 fabric:profile-create --parents camel rider-auto-backend
