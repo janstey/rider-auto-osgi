@@ -21,7 +21,9 @@ fabric:profile-edit --features rider-auto-backend rider-auto-backend
 
 shell:echo Creating containers
 fabric:container-create-child --profile mq root rider-auto-broker
+shell:sleep 1000
 fabric:container-create-child --profile rider-auto-frontend root rider-auto-frontend
+shell:sleep 1000
 fabric:container-create-child --profile rider-auto-backend root rider-auto-backend
 
 shell:echo done.

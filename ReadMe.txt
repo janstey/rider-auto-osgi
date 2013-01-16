@@ -14,10 +14,10 @@ Setup
     - configure this location as the environment variable MAVEN_HOME
     - add MAVEN_HOME/bin to your PATH environment variable
 
-- Install Fuse IDE for Camel
-    - Download from http://fusesource.com/products/fuse-ide/
+- Install Fuse IDE 7.1.60
+    - Download from http://www.redhat.com/fusesource/downloads
 
-- Install Fuse ESB Enterprise 7.0.1
+- Install Fuse ESB Enterprise 7.1.0.fuse-047
   - Download from http://www.redhat.com/fusesource/downloads
 
 Build & Run
