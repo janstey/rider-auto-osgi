@@ -1,16 +1,15 @@
 NOTE: If you need the example from the "Getting Started with Apache Servicemix" 
 webinar, please use the code from the rider-auto-osgi-smx-4.4.1-fuse-00-08 tag instead.
 
-Example from "Using Apache Camel in ServiceMix" talk
+Example from "Enterprise Integration with Apache Camel and ServiceMix" talk
 ========================================================
 
-To run this example project build the project and deploy to ServiceMix or Fuse
-ESB Enterprise according to the steps below. 
+To run this example project build the project and deploy to Apache ServiceMix according to the steps below. 
 
 Setup
 ==============================
 
-- Install Fuse IDE 2.1
+- Install Fuse IDE 7.2
     - Download and unpack distribution from http://fusesource.com/products/fuse-ide/ 
 
 - Install Apache Maven 3+
@@ -20,8 +19,8 @@ Setup
     - configure this location as the environment variable MAVEN_HOME
     - add MAVEN_HOME/bin to your PATH environment variable
 
-- Install Fuse ESB Enterprise 7.0.0.fuse-00-061
-  - Download from http://fusesource.com/downloads/ and install
+- Install Apache ServiceMix 4.5.1
+  - Download from http://servicemix.apache.org and install
 
 Build & Run
 ==============================
@@ -30,18 +29,18 @@ Build & Run
 
 <project home> $ mvn clean install
 
-2) Start Fuse ESB Enterprise
+2) Start ServiceMix
 
-<ESB home> $ bin/fuseesb
+<ESB home> $ bin/servicemix
 
-3) Add this project's features.xml config to Fuse ESB Enterprise from the 
+3) Add this project's features.xml config to ServiceMix from the 
    console (makes it easier to install bundles with all required dependencies)
 
-FuseESB:karaf@root> features:addUrl mvn:org.fusesource.examples/rider-auto-common/4.0-SNAPSHOT/xml/features
+karaf@root> features:addUrl mvn:org.fusesource.examples/rider-auto-common/5.0-SNAPSHOT/xml/features
 
 4) Install the project.
 
-FuseESB:karaf@root> features:install rider-auto-osgi
+karaf@root> features:install rider-auto-osgi
 
 5) To test the file processing, there are existing files in the
    rider-auto-common module.
@@ -54,14 +53,9 @@ FuseESB:karaf@root> log:display
 
    or from the command line
 
-<ESB home> $ tail -f data/log/fuseesb.log
+<ESB home> $ tail -f data/log/servicemix.log
 
 6) To test the WS, use your favorite WS tool (e.g. SoapUI) against the following
    WSDL hosted by the rider-auto-ws bundle.
    * http://localhost:8182/cxf/order?wsdl
 
-Getting Help
-============================
-
-If you hit any problems please let the FuseSource team know on the forums
-  http://fusesource.com/forums/forum.jspa?forumID=2

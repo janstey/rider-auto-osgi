@@ -42,15 +42,12 @@ import static org.ops4j.pax.exam.CoreOptions.maven;
 @ExamReactorStrategy(AllConfinedStagedReactorFactory.class)
 public class RiderAutoFeatureTest extends FuseTestSupport {
 
-    static final String GROUP_ID = "org.fusesource.esb";
-    static final String ARTIFACT_ID = "fuse-esb-medium";
-
-    static final String KARAF_GROUP_ID = "org.apache.karaf";
-    static final String KARAF_ARTIFACT_ID = "apache-karaf";
+    static final String GROUP_ID = "org.apache.servicemix";
+    static final String ARTIFACT_ID = "apache-servicemix-full";
 	
     @Test
     public void testRiderAutoOsgi() throws Exception {
-    	System.err.println(executeCommand("features:addurl mvn:org.fusesource.examples/rider-auto-common/4.0-SNAPSHOT/xml/features"));
+    	System.err.println(executeCommand("features:addurl mvn:org.fusesource.examples/rider-auto-common/5.0-SNAPSHOT/xml/features"));
         installAndCheckFeature("rider-auto-osgi");
         unInstallAndCheckFeature("rider-auto-osgi");
     }
@@ -59,7 +56,7 @@ public class RiderAutoFeatureTest extends FuseTestSupport {
     public Option[] config() {
         return new Option[]{
                 esbDistributionConfiguration(), keepRuntimeFolder(),
-                editConfigurationFilePut("etc/system.properties", "esb.version", "7.0.0.fuse-061"),
+                editConfigurationFilePut("etc/system.properties", "esb.version", "4.5.1"),
                 logLevel(LogLevelOption.LogLevel.INFO)};
     }
     
@@ -82,11 +79,11 @@ public class RiderAutoFeatureTest extends FuseTestSupport {
     protected Option esbDistributionConfiguration() {
         return new DefaultCompositeOption(
                 new Option[]{karafDistributionConfiguration().frameworkUrl(
-                        maven().groupId(GROUP_ID).artifactId(ARTIFACT_ID).version("7.0.0.fuse-061").type("tar.gz"))
-                        .karafVersion(getKarafVersion()).name("Fuse ESB Distro").unpackDirectory(new File("target/paxexam/unpack/")),
+                        maven().groupId(GROUP_ID).artifactId(ARTIFACT_ID).version("4.5.1").type("tar.gz"))
+                        .karafVersion(getKarafVersion()).name("ServiceMix Distro").unpackDirectory(new File("target/paxexam/unpack/")),
                         useOwnExamBundlesStartLevel(50),
                       editConfigurationFilePut("etc/config.properties", "karaf.startlevel.bundle", "50"),
-                      mavenBundle("org.fusesource.tooling.testing","pax-exam-karaf", "7.0.0.fuse-061")
+                      mavenBundle("org.fusesource.tooling.testing","pax-exam-karaf", "7.2.0.redhat-024")
                 });
     }
 }

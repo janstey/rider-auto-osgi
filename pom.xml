@@ -37,7 +37,7 @@
     <module>rider-auto-ws</module>
     <module>rider-auto-normalizer</module>            
     <module>rider-auto-backend</module>    
- <!--   <module>rider-auto-itest</module>    -->
+    <module>rider-auto-itest</module> 
   </modules>
 
   <properties>
